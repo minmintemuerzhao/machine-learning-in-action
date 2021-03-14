@@ -1,0 +1,18 @@
+[DESIGN]
+max-parents=15
+
+[MASTER]
+extension-pkg-whitelist=pydantic
+
+[MESSAGES CONTROL]
+disable=logging-fstring-interpolation
+
+[MISCELLANEOUS]
+notes=FIXME,XXX
+
+[SIMILARITIES]
+ignore-imports=yes
+min-similarity-lines=25
+
+[TYPECHECK]
+generated-members=hashed_password

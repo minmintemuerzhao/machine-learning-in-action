@@ -88,6 +88,7 @@ def main():
     # 1、导入测试数据
     print("---------- 1.load data ------------")
     dataTest = loadDataSet("test_data.txt")
+
     # 2.Softmax Regression Train、导入FM模型
     print("---------- 2.Softmax Regression Train.load model ------------")
     w0, w, v = loadModel("../Train/weights_FM")

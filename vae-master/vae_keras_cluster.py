@@ -201,7 +201,7 @@ for i in range(10):
     _ = np.bincount(y_train_[y_train_pred == i])
     right += _.max()
 
-print 'train acc: %s' % (right / len(y_train_))
+print ('train acc: %s' % (right / len(y_train_)))
 
 
 right = 0.
@@ -209,4 +209,4 @@ for i in range(10):
     _ = np.bincount(y_test_[y_test_pred == i])
     right += _.max()
 
-print 'test acc: %s' % (right / len(y_test_))
+print ('test acc: %s' % (right / len(y_test_)))

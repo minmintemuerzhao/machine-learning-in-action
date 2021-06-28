@@ -138,4 +138,4 @@ vae.fit(shi2id,
 vae.save_weights('shi.model')
 
 for i in range(20):
-    print gen()
+    print(gen())

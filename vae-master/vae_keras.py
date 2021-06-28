@@ -41,9 +41,13 @@ z_mean = Dense(latent_dim)(h)
 z_log_var = Dense(latent_dim)(h)
 
 # 重参数技巧
+# 我们构建两个神经网络 μk=f1(Xk)，logσ^2=f2(Xk) 来得到均值和方差。
+# 我们选择拟合 logσ^2 而不是直接拟合 σ^2，
+# 是因为 σ^2 总是非负的，需要加激活函数处理，而拟合 logσ^2 不需要加激活函数，因为它可正可负。
 def sampling(args):
     z_mean, z_log_var = args
     epsilon = K.random_normal(shape=K.shape(z_mean))
+    # K.exp(z_log_var / 2) * epsilon将拟合的logσ^2变为σ
     return z_mean + K.exp(z_log_var / 2) * epsilon
 
 # 重参数层，相当于给输入加入噪声
@@ -98,6 +102,8 @@ figure = np.zeros((digit_size * n, digit_size * n))
 #用正态分布的分位数来构建隐变量对
 grid_x = norm.ppf(np.linspace(0.05, 0.95, n))
 grid_y = norm.ppf(np.linspace(0.05, 0.95, n))
+# grid_x = np.linspace(0.05, 0.95, n)
+# grid_y = np.linspace(0.05, 0.95, n)
 
 for i, yi in enumerate(grid_x):
     for j, xi in enumerate(grid_y):
